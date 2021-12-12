@@ -1,5 +1,5 @@
 export default function Cell(props){
     return (
-        <div data-rows={props.row} data-columns={props.column}> {props.value} </div>
+        <div data-rows={props.cellRow} data-columns={props.cellColumn}>X</div>
     );
 }

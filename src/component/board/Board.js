@@ -14,7 +14,8 @@ export default function Board(){
     ])
     return (
         <div class="game">
-        {board.map((v, row) => <div class="flexbox"> {v.map((value,column) => <Cell row={row} column={column} />)}</div>)}
+
+        {board.map((v, row) => <div class="flexbox"> {v.map((value,column) => <Cell cellRow={row} cellColumn={column} />)}</div>)}
         </div>
     );
 }
