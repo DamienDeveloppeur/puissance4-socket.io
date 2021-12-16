@@ -24,7 +24,7 @@
       console.log('Message received from server: ', message);
       socket.emit('confirm');
 
-        socket.on('send', (message) =>{
+        socket.on('send', function(message) =>{
             console.log(message)
         });
     });

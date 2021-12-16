@@ -32,6 +32,7 @@ io.on('connection', (socket) => {
   });
 
   const board =socket.on("TROLL", function(msg){
+    console.log(msg);
    return msg;
   })
   socket.emit("send", board);
