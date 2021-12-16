@@ -24,7 +24,7 @@
       console.log('Message received from server: ', message);
       socket.emit('confirm');
     });
-    socket.emit("player" ,"player1");
+    socket.emit("player" ,window.prompt("votre nom?"));
     /*socket.on('send', function (msg){
         console.log(msg);
     });*/
