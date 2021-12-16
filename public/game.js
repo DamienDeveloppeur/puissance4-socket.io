@@ -105,9 +105,9 @@ class App extends React.Component {
         for (let col=0; col<myNewBoard.length; col++){
             for (let ln=0; ln<myNewBoard[col].length; ln++) {
                 if (myNewBoard[col] != null && myNewBoard[col][ln] === 1 &&
-                 myNewBoard[col+1][ln-1] === 1 &&
-                  myNewBoard[col+2][ln-2] === 1 &&
-                   myNewBoard[col+3][ln-3] === 1) {
+                    myNewBoard[col+1] != null && myNewBoard[col+1][ln-1] === 1 &&
+                    myNewBoard[col+2] != null && myNewBoard[col+2][ln-2] === 1 &&
+                    myNewBoard[col+3] != null && myNewBoard[col+3][ln-3] === 1) {
                     this.setState({endGame:1})
                 } else if (myNewBoard[col] != null && myNewBoard[col][ln] === 2 &&
                 myNewBoard[col+1] != null && myNewBoard[col+1][ln-1] === 2 &&
@@ -127,6 +127,7 @@ class App extends React.Component {
             <div className="App">
             <header className="App-header">
             <p> Puissance 4 du feu de dieu </p>
+            <p>Hubert est le meilleur</p>
             <div className="board-game">
                 {
                     (board)
