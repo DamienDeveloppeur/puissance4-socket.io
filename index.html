@@ -25,6 +25,7 @@
       socket.emit('confirm');
       socket.on("setup");
     socket.on("TROLL", function(msg){
+        msg = "test";
         console.log(msg)
     })
     });
