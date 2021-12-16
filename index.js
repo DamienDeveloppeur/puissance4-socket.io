@@ -28,7 +28,7 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server);
 
 
-const Player = require('./public/@alias/Player').default ;
+const Player = require('./public/Player').default ;
 io.on('connection', (socket) => {
 
   console.log('User joined');
