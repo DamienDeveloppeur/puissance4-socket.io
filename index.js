@@ -35,8 +35,6 @@ io.on('connection', (socket) => {
     console.log(msg);
     socket.emit("send", msg);
   })
-
-
 });
 
 
