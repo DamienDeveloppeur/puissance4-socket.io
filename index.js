@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
   });
 
   let game = new App();
-  socket.emit("TROLL",game.handleClick());
+  socket.emit("TROLL",game.render());
 
 
 
