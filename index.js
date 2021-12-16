@@ -28,9 +28,9 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server);
 
 
-
+const {Player} = require("./public/Player");
 io.on('connection', (socket) => {
-  const {Player} = require("./public/Player");
+
   console.log('User joined');
 
   socket.on('player', (name) =>{
