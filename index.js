@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
     console.log(msg);
     return msg;
   })
-  socket.emit("send", board);
+  socket.emit("send", "test");
 
 
 
