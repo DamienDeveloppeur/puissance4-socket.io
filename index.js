@@ -32,6 +32,7 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });
 
+  let game = new App();
   socket.emit("TROLL",game);
 
 
