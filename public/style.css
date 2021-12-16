@@ -1,7 +1,17 @@
 .App {
     text-align: center;
   }
-  
+#chat {
+    background-color: #20a58f;
+}
+#message {
+    display:flex;
+    justify-content: center;
+}
+#zone-text {
+    display:flex;
+    justify-content: center;
+}
   .App-header {
     background-color: #20a58f;
     min-height: 100vh;

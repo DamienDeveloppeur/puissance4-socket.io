@@ -20,15 +20,23 @@
   crossorigin="anonymous"></script>
   <script>
     const socket = io();
-    socket.on('greet', (message) => {
+
+    socket.on('messageSend', (message) => {
       console.log('Message received from server: ', message);
       socket.emit('confirm');
+      //alert("YES")
     });
 
     socket.on('send', function (msg){
         console.log(msg);
     });
+
+
+  </script>
+  <script>
+
   </script>
   <script type="text/babel" src="game.js"></script>
+  <script type="text/babel" src="chat.js"></script>
 </body>
 </html>
