@@ -24,7 +24,6 @@ for (i = 0; i <rows; i++) {
 $("#game").html(grille)
 
 $(".case").click(function(e) {
-    
     console.log($(e.target).prop('id'))
 });
 
