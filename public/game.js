@@ -120,7 +120,7 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-        socket.emit("TROLL", this);
+
     }
 
     render() {
@@ -154,3 +154,8 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
   );
+
+socket.emit("TROLL",render =>{
+    render = render();
+    return render;
+})
