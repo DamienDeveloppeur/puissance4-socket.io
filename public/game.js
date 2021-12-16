@@ -48,7 +48,7 @@ class App extends React.Component {
     }
 
     handleClick = x => {
-        socket.emit("TROLL", "TROLL");
+
         //console.log("x", x);
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
@@ -63,7 +63,7 @@ class App extends React.Component {
                 break;
             }
         }
-        
+        socket.emit("TROLL", handleClick());
         // Victoire en colonne
         for (let col=0; col<myNewBoard.length-2; col++){
             for (let ln=0; ln<myNewBoard[col].length-3; ln++) {
