@@ -31,6 +31,11 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });
 
+  socket.on("TROLL", function(msg){
+
+    socket.emit("send", msg);
+  })
+
 
 
 
