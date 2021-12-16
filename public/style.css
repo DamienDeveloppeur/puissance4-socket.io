@@ -1,0 +1,39 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: #20a58f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  .board-game {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      height: 650px;
+      width: 800px;
+  }
+  .cercle{
+      margin: 2px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      border: 3px solid white;
+  }
+  
+  .jaune {
+      background-color: rgb(67, 160, 71);
+  }
+  .rouge {
+      background-color: rgb(71, 16, 134);
+  }
+  .hover-color {
+      background-color: rgba(33, 24, 114, 0.125);
+  }

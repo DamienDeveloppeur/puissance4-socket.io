@@ -27,3 +27,5 @@ $(".case").click(function(e) {
     
     console.log($(e.target).prop('id'))
 });
+
+

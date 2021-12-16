@@ -1,19 +1,33 @@
-const express = require("express");
+const path = require('path');
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const fs = require("fs");
 
-console.log("test")
+const http = require("http").Server(app);
+//const io = require("socket.io")(http);
 
-app.get("/", (req,res, next) => {
-    fs.readFile(__dirname + '/index.html', 'utf8', (err, text) => {
-        return res.send(text);
-    });
-    
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
-// fourni par heroku : process.env.port
-app.listen(port, () => {
-    console.log("App running on port :" + port)
-})
 
-// location.reload();
+app.get('/', (req, res, next) => {
+  return res.sendFile(path.join(__dirname, './index.html'));
+});
+
+const server = app.listen(port, () => {
+    console.log('App running on port: ' + port);
+});
+
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log('User joined');
+  // on peut repérer une déconnexion
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+});
+
