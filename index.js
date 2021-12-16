@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const http = require("http").Server(app);
 //const io = require("socket.io")(http);
 
+const Player = require("./public/player");
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(err, req, res, next) {
@@ -26,6 +27,10 @@ const io = require('socket.io')(server);
 io.on('connection', (socket) => {
   console.log('User joined');
 
+  socket.on('player', (name) =>{
+    let player = new Player(socket.id, name);
+    console.log(player);
+  })
   // on peut repérer une déconnexion
   socket.on('disconnect', () => {
     console.log('User disconnected');

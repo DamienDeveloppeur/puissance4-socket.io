@@ -24,10 +24,10 @@
       console.log('Message received from server: ', message);
       socket.emit('confirm');
     });
-
-    socket.on('send', function (msg){
+    socket.emit("player" ,window.prompt("votre nom?"));
+    /*socket.on('send', function (msg){
         console.log(msg);
-    });
+    });*/
   </script>
   <script type="text/babel" src="game.js"></script>
 </body>
