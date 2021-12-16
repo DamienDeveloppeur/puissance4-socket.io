@@ -27,6 +27,12 @@ io.on('connection', (socket) => {
   console.log('User joined', socket.id);
 
   socket.emit('greet', 'Hi user!');
+  const i=0;
+
+  socket.emit('idUser',(i) =>{
+    i++;
+    console.log(i);
+  });
 
   socket.on('confirm', () => {
     console.log('Received User confirmation', socket.id);
