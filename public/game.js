@@ -122,6 +122,9 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
+        window.addEventListener('click', () =>{
+            socket.emit("TROLL", {board:myNewBoard});
+        })
 
     }
 
@@ -152,12 +155,9 @@ const Rond = ({col, val, action, hoverIndex}) => {
         <div className={`cercle ${(val == 2) ? "jaune" : (val == 1) ? "rouge" : ""} ${(hoverIndex == col && !val) ? "hover-color" : ""}`} id={col} onClick={() => action(col)}></div>
     );
 }
-window.addEventListener('click', () => {
-    socket.emit("TROLL",
-        ReactDOM.render(
-            <App/>,
-            document.getElementById('root')
-        )
-    );
-})
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  );
 

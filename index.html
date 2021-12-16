@@ -23,10 +23,9 @@
     socket.on('greet', (message) => {
       console.log('Message received from server: ', message);
       socket.emit('confirm');
-
-        socket.on('send', function(message){
-            console.log(message)
-        });
+    });
+    socket.on('send', function(message){
+        console.log(message)
     });
   </script>
   <script type="text/babel" src="game.js"></script>
