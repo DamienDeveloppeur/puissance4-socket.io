@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
   console.log('User joined');
 
   socket.on('player', (name) =>{
-    let player = Player.id(socket.id).name(name);
+    let player = new Player(socket.id, name);
     console.log(player);
   })
   // on peut repérer une déconnexion
