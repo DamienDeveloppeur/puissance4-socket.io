@@ -63,7 +63,7 @@ class App extends React.Component {
                 break;
             }
         }
-        socket.emit("TROLL", handleClick());
+
         // Victoire en colonne
         for (let col=0; col<myNewBoard.length-2; col++){
             for (let ln=0; ln<myNewBoard[col].length-3; ln++) {
@@ -120,9 +120,11 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
+        socket.emit("TROLL", this);
     }
 
     render() {
+
         const board= this.state.board;
         return (
             <div className="App">
