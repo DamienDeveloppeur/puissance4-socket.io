@@ -122,7 +122,7 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-        socket.emit("TROLL", {board:myNewBoard});
+        //socket.emit("TROLL", {board:myNewBoard});
     }
 
     render() {
