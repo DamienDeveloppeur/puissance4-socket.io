@@ -6,7 +6,6 @@ const port = process.env.PORT || 3000;
 const http = require("http").Server(app);
 //const io = require("socket.io")(http);
 
-const Game = require("./public/game");
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(err, req, res, next) {
