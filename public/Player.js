@@ -2,7 +2,7 @@ export class Player {
 id;
 name;
 
-    init(id,name){
+    constructor(id,name){
         this.id=id;
         this.name=name;
     }
