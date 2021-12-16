@@ -22,12 +22,18 @@ const server = app.listen(port, () => {
 });
 
 const io = require('socket.io')(server);
-
 io.on('connection', (socket) => {
-  console.log('User joined');
-  // on peut repérer une déconnexion
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-  });
-});
 
+  console.log('User joined', socket.id);
+
+  socket.emit('greet', 'Hi user!');
+
+  socket.on('confirm', () => {
+    console.log('Received User confirmation', socket.id);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected', socket.id);
+  });
+
+});
