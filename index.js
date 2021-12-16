@@ -28,15 +28,18 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server);
 
 
-const Player = require('./public/Player').default ;
+const {Player} = require('./public/Player');
+let player = new Player(1,"test");
+console.log(player);
+
 io.on('connection', (socket) => {
 
   console.log('User joined');
 
-  socket.on('player', (name) =>{
+  /*socket.on('player', (name) =>{
     let player = new Player(socket.id, name);
     console.log(player);
-  })
+  })*/
   // on peut repérer une déconnexion
   socket.on('disconnect', () => {
     console.log('User disconnected');

@@ -7,5 +7,3 @@ class Player {
         this.name=name;
     }
 }
-
-export default Player;
