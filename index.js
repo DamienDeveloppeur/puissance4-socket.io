@@ -29,7 +29,7 @@ const io = require('socket.io')(server);
 
 
 const {Player} = require('./public/Player');
-let player = new Player(1,"test");
+let player = new Player();
 console.log(player);
 
 io.on('connection', (socket) => {
