@@ -48,10 +48,12 @@ class App extends React.Component {
     }
 
     handleClick = x => {
-        socket.emit("TROLL", "TROLL");
+
         //console.log("x", x);
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
+
+
         //console.log(myNewBoard);
         const myCol = myNewBoard[x];
 
@@ -63,7 +65,7 @@ class App extends React.Component {
                 break;
             }
         }
-        
+
         // Victoire en colonne
         for (let col=0; col<myNewBoard.length-2; col++){
             for (let ln=0; ln<myNewBoard[col].length-3; ln++) {
@@ -120,9 +122,14 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
+        window.addEventListener('click', () =>{
+            socket.emit("TROLL", {board:myNewBoard});
+        })
+
     }
 
     render() {
+
         const board= this.state.board;
         return (
             <div className="App">
@@ -140,6 +147,7 @@ class App extends React.Component {
             </div>
         );
     }
+
 }
 
 const Rond = ({col, val, action, hoverIndex}) => {
@@ -152,3 +160,4 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
   );
+
