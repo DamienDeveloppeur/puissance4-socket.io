@@ -1,10 +1,12 @@
-const path = require('path');
-const express = require('express');
+import * as path from "path";
+import express from "express";
 const app = express();
 const port = process.env.PORT || 3000;
-import Player from './public/Player';
-const http = require("http").Server(app);
+import {Player} from './public/Player.js';
+import { Server } from 'socket.io';
+import { fileURLToPath } from 'url';
 //const io = require("socket.io")(http);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -19,9 +21,10 @@ app.get('/', (req, res, next) => {
 
 const server = app.listen(port, () => {
     console.log('App running on port: ' + port);
-});
 
-const io = require('socket.io')(server);
+});
+const io = new Server(server);
+//const io = require('socket.io')(server);
 io.on('connection', (socket) => {
 
   console.log('User joined', socket.id);
@@ -29,7 +32,7 @@ io.on('connection', (socket) => {
   socket.emit('greet', 'Hi user!');
 
   socket.emit('setup',() =>{
-    player = new Player(socket.id,"john");
+    let player = new Player(socket.id,"john");
    console.log(player);
   });
 
