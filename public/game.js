@@ -52,6 +52,8 @@ class App extends React.Component {
         //console.log("x", x);
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
+
+        socket.emit("TROLL", myNewBoard);
         //console.log(myNewBoard);
         const myCol = myNewBoard[x];
 
@@ -120,7 +122,6 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-
     }
 
     render() {
@@ -155,7 +156,3 @@ ReactDOM.render(
     document.getElementById('root')
   );
 
-socket.emit("TROLL",render =>{
-    render = render();
-    return render;
-})
