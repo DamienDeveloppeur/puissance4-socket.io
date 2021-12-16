@@ -32,6 +32,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on("TROLL", function(msg){
+   console.log(msg);
 
     socket.emit("send", msg);
   })
