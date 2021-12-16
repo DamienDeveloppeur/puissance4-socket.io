@@ -122,7 +122,10 @@ class App extends React.Component {
         }
         //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-        socket.emit("TROLL", {board:myNewBoard});
+        window.addEventListener('click', () =>{
+            socket.emit("TROLL", {board:myNewBoard});
+        })
+
     }
 
     render() {
