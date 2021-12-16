@@ -1,4 +1,4 @@
-console.log("test")
+//console.log("test")
 class App extends React.Component {
 
     constructor(props) {
@@ -40,18 +40,19 @@ class App extends React.Component {
         ];
         this.setState({board: newBoard, endGame: 0});
     }
-    handleHover = (x) => {
-        this.setState({hoverIndex: x})
-    }
+    // handleHover = (x) => {
+    //     this.setState({hoverIndex: x})
+    // }
     handleMouseLeave = () => {
         this.setState({hoverIndex: null})
     }
 
     handleClick = x => {
-        console.log("x", x);
+        socket.emit("TROLL", "TROLL");
+        //console.log("x", x);
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
-        console.log(myNewBoard);
+        //console.log(myNewBoard);
         const myCol = myNewBoard[x];
 
         for (let i=myCol.length-1; i>=0; i--) {
@@ -117,7 +118,7 @@ class App extends React.Component {
                 }
             }
         }
-        console.log("Update", myNewBoard);
+        //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
     }
 
@@ -125,17 +126,17 @@ class App extends React.Component {
         const board= this.state.board;
         return (
             <div className="App">
-            <header className="App-header">
-            <p> Puissance 4 du feu de dieu </p>
-            <p>Hubert est le meilleur</p>
-            <div className="board-game">
-                {
-                    (board)
-                    ? board.map((x, idx) => <div onMouseLeave={this.handleMouseLeave} onMouseOver={()=> this.handleHover(idx)} key={idx}>{x.map((y, key) => <Rond key={key} val={y} hoverIndex={this.state.hoverIndex} col={idx} action={this.handleClick}/>)}</div>)
-                    : null
-                }
-            </div>
-            </header>
+                <div className="App-header">
+                    <p> Puissance 4 du feu de dieu </p>
+                    <p>In Hubert we trust</p>
+                    <div className="board-game">
+                        {
+                            (board)
+                            ? board.map((x, idx) => <div onMouseLeave={this.handleMouseLeave} key={idx}>{x.map((y, key) => <Rond key={key} val={y} hoverIndex={this.state.hoverIndex} col={idx} action={this.handleClick}/>)}</div>)
+                            : null
+                        }
+                    </div>
+                </div>
             </div>
         );
     }

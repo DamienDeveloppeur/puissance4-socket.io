@@ -25,9 +25,14 @@ const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
   console.log('User joined');
+  socket.emit("test")
   // on peut repérer une déconnexion
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
+  socket.on("TROLL", function(msg){
+    console.log("yes")
+  })
 });
 
