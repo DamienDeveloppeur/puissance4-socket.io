@@ -33,14 +33,15 @@ io.on('connection', (socket) => {
 
 });
 
-window.addEventListener('click', function(){
 
+io.on('click', () =>{
   const board =socket.on("TROLL", function(msg){
     console.log(msg);
     return msg;
   })
   socket.emit("send", "click");
 })
+
 
 
 
