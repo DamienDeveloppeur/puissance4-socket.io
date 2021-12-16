@@ -31,9 +31,7 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });
 
-  socket.on("TROLL", function(msg){
-    console.log(msg)
-  })
+
 
 });
 
