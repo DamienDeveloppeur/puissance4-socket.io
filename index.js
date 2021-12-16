@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-
+import Player from './public/Player';
 const http = require("http").Server(app);
 //const io = require("socket.io")(http);
 
@@ -27,11 +27,10 @@ io.on('connection', (socket) => {
   console.log('User joined', socket.id);
 
   socket.emit('greet', 'Hi user!');
-  const i=0;
 
-  socket.emit('idUser',(i) =>{
-    i++;
-    console.log(i);
+  socket.emit('setup',() =>{
+    player = new Player(socket.id,"john");
+   console.log(player);
   });
 
   socket.on('confirm', () => {
