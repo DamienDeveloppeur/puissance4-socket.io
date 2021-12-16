@@ -39,7 +39,7 @@ window.addEventListener('click', function(){
     console.log(msg);
     return msg;
   })
-  socket.emit("send", board);
+  socket.emit("send", "click");
 })
 
 
