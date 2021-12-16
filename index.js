@@ -32,8 +32,9 @@ io.on('connection', (socket) => {
   socket.emit('greet', 'Hi user!');
 
   socket.emit('setup',() =>{
-    let player = new Player(socket.id,"john");
-   console.log(player);
+    let name = window.prompt("Votre nom");
+    let player = new Player(1,name);
+    console.log(player);
   });
 
   socket.on('confirm', () => {

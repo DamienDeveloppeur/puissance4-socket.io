@@ -24,6 +24,7 @@
     socket.on('greet', (message) => {
       console.log('Message received from server: ', message);
       socket.emit('confirm');
+      socket.on("setup");
     });
   </script>
 </body>
