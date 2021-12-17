@@ -27,7 +27,7 @@ const io = require('socket.io')(server);
 
 const {Player} = require('./public/Player');
 
-var players = [];
+var players = {};
 
 
 io.on('connection', (socket) => {
@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
   socket.on("play", (x,joueur) => {
     console.log("countP : " + countP);
     console.log("players server sides : " + players)
-    io.emit("play",x, joueur, players);
+    io.emit("play",x, joueur, players[socket.id]);
   })
 
 
@@ -46,11 +46,8 @@ io.on('connection', (socket) => {
       countP++;
       let bool;
       (countP == 1) ? bool = true : bool = false
-      
-      //let player = new Player(socket.id, name, bool);
-  
       players[socket.id] = {id: socket.id, name: name, color:bool};
-      io.emit("prompt", players);
+      io.emit("prompt", players[socket.id]);
       console.log(players);
       console.log(countP);
     }

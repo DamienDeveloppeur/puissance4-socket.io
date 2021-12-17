@@ -24,6 +24,7 @@
     const socket = io();
     socket.emit("player" ,window.prompt("votre nom?"));
     socket.on("prompt", (play) => {
+      console.log("OKEYYYY")
       players = play;
       console.log(players)
     })

@@ -48,9 +48,10 @@ class App extends React.Component {
 
     componentDidMount() {
         socket.on("play", (x, player, players) => {
-            socket.emit('confirm');
+        socket.emit('confirm');
         console.log("PLAYERS : " + players)
-        console.log("PLAYERS : " + players[socket.id])
+        console.log("PLAYERS : " + players.color)
+        if(players.color != this.state.tourJoueurJaune) return;
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
         const myCol = myNewBoard[x];
