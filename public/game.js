@@ -134,7 +134,7 @@ class App extends React.Component {
             <div className="App">
                 <div className="App-header">
                     <p> Puissance 4 du feu de dieu </p>
-                    <p>In Hubert we trust</p>
+                    <p>In ALLAN AND SYNAPTICS we trust</p>
                     <div className="board-game">
                         {
                             (board)
