@@ -1,6 +1,4 @@
-//console.log("test")
 class App extends React.Component {
-
     constructor(props) {
       super(props);
       this.basic = [
@@ -49,14 +47,12 @@ class App extends React.Component {
 
 
     componentDidMount() {
-        socket.on("play", (x, player) => {
-            console.log("OUIIIIIIIIII")
-        //console.log("x", x);
+        socket.on("play", (x, player, players) => {
+            socket.emit('confirm');
+        console.log("PLAYERS : " + players)
+        console.log("PLAYERS : " + players[socket.id])
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
-
-
-        //console.log(myNewBoard);
         const myCol = myNewBoard[x];
 
         for (let i=myCol.length-1; i>=0; i--) {
@@ -122,14 +118,8 @@ class App extends React.Component {
                 }
             }
         }
-        //console.log("Update", myNewBoard);
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-        window.addEventListener('click', () =>{
-            socket.emit("TROLL", {board:myNewBoard});
-        })
-
-            console.log('Message received from server: ', message);
-            socket.emit('confirm');
+        
         })
     }
     handleClick = x => {
