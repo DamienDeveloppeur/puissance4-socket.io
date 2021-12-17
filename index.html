@@ -20,11 +20,6 @@
   crossorigin="anonymous"></script>
   <script>
     const socket = io();
-
-    socket.on('messageSend', (message) => {
-      console.log('Message received from server: ', message);
-      socket.emit('confirm');
-    });
     socket.emit("player" ,window.prompt("votre nom?"));
 
   </script>

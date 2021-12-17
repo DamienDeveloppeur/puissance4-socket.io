@@ -47,8 +47,10 @@ class App extends React.Component {
         this.setState({hoverIndex: null})
     }
 
-    handleClick = x => {
 
+    componentDidMount() {
+        socket.on("play", (x, player) => {
+            console.log("OUIIIIIIIIII")
         //console.log("x", x);
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
@@ -126,6 +128,12 @@ class App extends React.Component {
             socket.emit("TROLL", {board:myNewBoard});
         })
 
+            console.log('Message received from server: ', message);
+            socket.emit('confirm');
+        })
+    }
+    handleClick = x => {
+        socket.emit("play", x, this.state.tourJoueurJaune)
     }
 
     render() {

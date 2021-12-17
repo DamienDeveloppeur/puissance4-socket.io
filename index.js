@@ -48,6 +48,11 @@ io.on('connection', (socket) => {
     io.emit("messageSend", msg);
     //alert("test")
   })
+
+  socket.on("play", function(x,joueur){
+    io.emit("play",x, joueur);
+    console.log("JEUX");
+  })
 });
 
 
