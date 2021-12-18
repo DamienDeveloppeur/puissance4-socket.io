@@ -17,7 +17,7 @@ class Chat extends React.Component {
             // const node = this.myRef.current.value;
              console.log("PLAYERS : " +players)
             this.setState(prevState => ({
-                message: [...prevState.message, {msg: message}]
+                message: [...prevState.message, {msg: message, autor: players.name}]
               }))
               console.log(this.state.message)
             console.log('Message received from server: ', message);
