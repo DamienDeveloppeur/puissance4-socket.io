@@ -5,8 +5,7 @@ class Chat extends React.Component {
         this.listMessage = React.createRef();
         this.state = {
             message : [
-                {autor : "marcel", msg: "Hello !"},
-                {autor: "serdan", msg:"Hello le test"}
+                {autor: "Le trolleur", msg:"Hello le test"}
             ]
         }
     }
