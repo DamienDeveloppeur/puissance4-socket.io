@@ -5,17 +5,17 @@ class Chat extends React.Component {
         this.listMessage = React.createRef();
         this.state = {
             message : [
-                {msg: "test"},
-                {msg:"toast"}
+                {autor : "marcel", msg: "Hello !"},
+                {autor: "serdan", msg:"Hello le test"}
             ]
         }
     }
     componentDidMount(){
         
-        socket.on('messageSend', (message) => {
+        socket.on('messageSend', (message, players) => {
             //this.setState({message: node});
             // const node = this.myRef.current.value;
-            // console.log("node : " +node)
+             console.log("PLAYERS : " +players)
             this.setState(prevState => ({
                 message: [...prevState.message, {msg: message}]
               }))
@@ -28,28 +28,25 @@ class Chat extends React.Component {
 
     send = () => {
         const node = this.myRef.current.value;
-
-        console.log("Ok msg");
-        console.log(node)
-        
         socket.emit("messageSend", node)
-        
-
     }
     render() {
         const message = this.state.message;
         //console.log(message)
         return (
             <div className="Chat">
-                <div id="zone-text">
-                <input type="text" id="ref" ref={this.myRef} ></input>
-                <button id="send" onClick={() => {this.send()}} >Send</button>
-                </div>
+            
                 
                 <div id="message" ref={this.listMessage}>
-                    {message.map((obj,i) => obj.msg )}
+                    {message.map((obj,i) => 
+                        <div className="message-autor">{obj.autor} : {obj.msg}</div>
+                     )}
                 </div>
-
+                <div id="zone-text">
+                    <input type="text" id="ref" ref={this.myRef} ></input>
+                    <button id="send" onClick={() => {this.send()}} >Send</button>
+                </div>
+               
             </div>
         );
     }

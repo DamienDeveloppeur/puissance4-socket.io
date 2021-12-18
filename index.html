@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="/style.css" type="text/css">
 </head>
 <body>
-  <div id="root"></div>
-  <div id="chat"></div>
+  <div class="flexbox">
+    <div id="root"></div>
+    <div id="chat"></div>
+  </div>
+
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -23,11 +26,11 @@
 
     const socket = io();
     socket.emit("player" ,window.prompt("votre nom?"));
-    socket.on("prompt", (play) => {
-      console.log("OKEYYYY")
-      players = play;
-      console.log(players)
-    })
+   // socket.on("prompt", (play) => {
+     // console.log("OKEYYYY")
+    //  players = play;
+    //  console.log(players)
+  //  })
   </script>
   <script>
 

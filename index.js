@@ -48,8 +48,6 @@ io.on('connection', (socket) => {
       (countP == 1) ? bool = true : bool = false
       players[socket.id] = {id: socket.id, name: name, color:bool};
       io.emit("prompt", players[socket.id]);
-      console.log(players);
-      console.log(countP);
     }
 
   })
@@ -57,10 +55,11 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
-
+-
   socket.on("messageSend", function(msg){
     console.log("msg send : "+ msg);
-    io.emit("messageSend", msg);
+    console.log("i : "+ players[socket.id])
+    io.emit("messageSend", msg, players[socket.id]);
     //alert("test")
   })
 

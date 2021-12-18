@@ -132,7 +132,6 @@ class App extends React.Component {
         const board= this.state.board;
         return (
             <div className="App">
-                <div className="App-header">
                     <p> Puissance 4 du feu de dieu </p>
                     <p>In Hubert we trust</p>
                     <div className="board-game">
@@ -142,7 +141,6 @@ class App extends React.Component {
                             : null
                         }
                     </div>
-                </div>
             </div>
         );
     }
