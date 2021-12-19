@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const http = require("http").Server(app);
 //const io = require("socket.io")(http);
 let countP = 0;
+const tableauJoueur=[];
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,27 +31,55 @@ const {Player} = require('./public/Player');
 var players = {};
 
 
+
 io.on('connection', (socket) => {
+
+
+
   console.log('User joined');
 
-  socket.on("play", (x,joueur) => {
-    console.log("countP : " + countP);
-    console.log("players server sides : " + players)
-    io.emit("play",x, joueur, players[socket.id]);
-  })
+    socket.on("play", (x,joueur) => {
+      console.log("joueur var ? :"+joueur);
+      console.log("countP : " + countP);
+      console.log("players server sides : " + players)
+
+      io.emit("play",x, joueur, players[socket.id]);
+
+      socket.emit('messageServer', tableauJoueur);
+
+    })
 
 
-  socket.on('player', (name) =>{
-    if(countP == 2) return;
+  socket.on('player', (name, token) => {
+    console.log(token)
+    if (countP == 2) return;
     else {
-      countP++;
-      let bool;
-      (countP == 1) ? bool = true : bool = false
-      players[socket.id] = {id: socket.id, name: name, color:bool};
-      io.emit("prompt", players[socket.id]);
+        countP++;
+        let bool;
+        (countP == 1) ? bool = true : bool = false
+        players[socket.id] = {id: socket.id, name: name, color:bool};
+        //players[socket.id] = {id: socket.id, name: name, color: token};
+        tableauJoueur.push(players[socket.id])
+
+        if(countP <2){
+          socket.emit('loadingSpinner');
+        }
+       else{
+         socket.emit('disableLoadinSpinner');
+        }
+        io.emit("prompt", players[socket.id]);
+        console.log(players[socket.id])
     }
 
+
   })
+
+
+
+
+
+
+
   // on peut repérer une déconnexion
   socket.on('disconnect', () => {
     console.log('User disconnected');
@@ -62,6 +91,8 @@ io.on('connection', (socket) => {
     io.emit("messageSend", msg, players[socket.id]);
     //alert("test")
   })
+
+
 
 
 });

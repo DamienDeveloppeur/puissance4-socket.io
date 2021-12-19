@@ -50,8 +50,10 @@ class App extends React.Component {
         socket.on("play", (x, player, players) => {
         socket.emit('confirm');
         console.log("PLAYERS : " + players)
-        console.log("PLAYERS : " + players.color)
-        if(players.color != this.state.tourJoueurJaune) return;
+
+        if(players.color != this.state.tourJoueurJaune){
+            return;
+        }
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
         const myCol = myNewBoard[x];
@@ -120,11 +122,21 @@ class App extends React.Component {
             }
         }
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-        
+
+
+
         })
     }
     handleClick = x => {
-        socket.emit("play", x, this.state.tourJoueurJaune)
+        socket.on('messageServer',function(nbJoueur){
+            if( (nbJoueur[0].color ==true && nbJoueur[1].color==true) || (nbJoueur[0].color ==false && nbJoueur[1].color==false) ){
+               let confirm = window.confirm("restart game?");
+               if(confirm){
+                   window.location.href='http://localhost:3000/';
+               }
+            }
+        })
+        socket.emit("play", x, this.state.tourJoueurJaune);
     }
 
     render() {

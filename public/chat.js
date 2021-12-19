@@ -18,7 +18,7 @@ class Chat extends React.Component {
             this.setState(prevState => ({
                 message: [...prevState.message, {msg: message, autor: players.name}]
               }))
-              console.log(this.state.message)
+            console.log(this.state.message)
             console.log('Message received from server: ', message);
             socket.emit('confirm');
 
@@ -28,22 +28,23 @@ class Chat extends React.Component {
     send = () => {
         const node = this.myRef.current.value;
         socket.emit("messageSend", node)
+        console.log(node)
     }
     render() {
         const message = this.state.message;
         //console.log(message)
         return (
             <div className="Chat">
-            
-                
-                <div id="message" ref={this.listMessage}>
-                    {message.map((obj,i) => 
-                        <div className="message-autor">{obj.autor} : {obj.msg}</div>
-                     )}
-                </div>
+                <h1>Messagerie</h1>
                 <div id="zone-text">
                     <input type="text" id="ref" ref={this.myRef} ></input>
                     <button id="send" onClick={() => {this.send()}} >Send</button>
+                </div>
+
+                <div id="message" ref={this.listMessage}>
+                    {message.map((obj,i) =>
+                        <div className="message-autor">{obj.autor} : {obj.msg}</div>
+                    )}
                 </div>
                
             </div>

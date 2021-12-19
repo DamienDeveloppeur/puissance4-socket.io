@@ -11,9 +11,14 @@
     <link rel="stylesheet" href="/style.css" type="text/css">
 </head>
 <body>
+
   <div class="flexbox">
+    <div id="modal"></div>
     <div id="root"></div>
-    <div id="chat"></div>
+   <div id="chat"></div>
+  <div id="spinner" style="width: 100%;height: 100%; position: absolute; top:0; left: 0">
+      <div>LOADING</div>
+  </div>
   </div>
 
 
@@ -25,17 +30,32 @@
     var players;
 
     const socket = io();
-    socket.emit("player" ,window.prompt("votre nom?"));
+    //socket.emit("player" ,window.prompt("votre nom?"));
    // socket.on("prompt", (play) => {
      // console.log("OKEYYYY")
     //  players = play;
     //  console.log(players)
   //  })
+
+    socket.on('openModal', () =>{
+        let modal = document.getElementById('modal');
+        modal.style.display='block';
+    })
+
+    let spinner = document.getElementById('spinner');
+    socket.on('loadingSpinner', ()=>{
+        spinner.style.display="block";
+    })
+    socket.on('disableLoadinSpinner', ()=>{
+        spinner.style.display="none";
+    })
   </script>
   <script>
 
   </script>
   <script type="text/babel" src="game.js"></script>
   <script type="text/babel" src="chat.js"></script>
+  <script type="text/babel" src="modal.js"></script>
+
 </body>
 </html>

@@ -15,7 +15,7 @@
     width:100%;
 }
 #chat {
-    width:60%;
+    /*width:60%;*/
 }
 .flexbox {
     display:flex;
@@ -55,4 +55,24 @@
 }
 .hover-color {
     background-color: rgba(33, 24, 114, 0.125);
+}
+#modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(000,000,000, 0.5);
+    font-size: 32px;
+}
+.modal_body{
+    width: 600px;
+    height: 600px;
+    margin: calc(25% - 300px) auto;
+    background-color: antiquewhite;
+}
+.modal{
+    display: block;
+    width: 200px;
+}
+#spinner{
+    display: none;
 }
