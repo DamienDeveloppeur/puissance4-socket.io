@@ -61,17 +61,7 @@ io.on('connection', (socket) => {
         //players[socket.id] = {id: socket.id, name: name, color: token};
         tableauJoueur.push(players[socket.id])
 
-        if(countP <2){
-          socket.emit('loadingSpinner');
-        }
-       else{
-         socket.emit('disableLoadinSpinner');
-        }
-        io.emit("prompt", players[socket.id]);
-        console.log(players[socket.id])
     }
-
-
   })
 
 

@@ -41,14 +41,6 @@
         let modal = document.getElementById('modal');
         modal.style.display='block';
     })
-
-    let spinner = document.getElementById('spinner');
-    socket.on('loadingSpinner', ()=>{
-        spinner.style.display="block";
-    })
-    socket.on('disableLoadinSpinner', ()=>{
-        spinner.style.display="none";
-    })
   </script>
   <script>
 
