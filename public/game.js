@@ -128,12 +128,29 @@ class App extends React.Component {
     }
 
     render() {
+        //let turn = <div className=""> {(this.state.tourJoueurJaune) ?  "Tour des jaunes" : "Tour des rouges"}</div>
+        socket.on("prompt", (players) => {
+           // console.log("players client side : "+ players[socket.id].id)
+            console.log("players client side : "+ JSON.stringify(players))
+            for (let key in players) {
+                console.log("here")
+                console.log( "test : "+ players[key])
+            }
+            console.log("here2")
+            // players.map((obj, i) => "test")
+                let  test = <div className="players">
+                    <div className="">
 
+                    </div>
+                </div>
+        })
         const board= this.state.board;
+        
         return (
             <div className="App">
                     <p> Puissance 4 du feu de dieu </p>
                     <p>In Hubert we trust</p>
+                    <div className=""> {(this.state.tourJoueurJaune) ?  "Tour des jaunes" : "Tour des rouges"}</div>
                     <div className="board-game">
                         {
                             (board)

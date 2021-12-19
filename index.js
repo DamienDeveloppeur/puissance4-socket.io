@@ -41,19 +41,25 @@ io.on('connection', (socket) => {
 
 
   socket.on('player', (name) =>{
-    if(countP == 2) return;
-    else {
+    if(countP == 2) {
+      console.log("wut ?")
+      io.emit("prompt", players);
+      return;
+    } else {
+      console.log("wut ?")
       countP++;
       let bool;
       (countP == 1) ? bool = true : bool = false
       players[socket.id] = {id: socket.id, name: name, color:bool};
-      io.emit("prompt", players[socket.id]);
+      io.emit("prompt", players);
+      console.log("players : "+ players)
     }
 
   })
   // on peut repérer une déconnexion
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    delete players[socket.id];
+    console.log('User disconnected : '+ socket.id);
   });
 -
   socket.on("messageSend", function(msg){

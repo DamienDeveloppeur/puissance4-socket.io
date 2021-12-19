@@ -17,7 +17,7 @@ class Chat extends React.Component {
              console.log("PLAYERS : " +players)
             this.setState(prevState => ({
                 message: [...prevState.message, {msg: message, autor: players.name}]
-              }))
+            }))
               console.log(this.state.message)
             console.log('Message received from server: ', message);
             socket.emit('confirm');
@@ -38,7 +38,7 @@ class Chat extends React.Component {
                 
                 <div id="message" ref={this.listMessage}>
                     {message.map((obj,i) => 
-                        <div className="message-autor">{obj.autor} : {obj.msg}</div>
+                        <div key={i} className="message-autor">{obj.autor} : {obj.msg}</div>
                      )}
                 </div>
                 <div id="zone-text">
