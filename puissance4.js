@@ -24,13 +24,7 @@ for (i = 0; i <rows; i++) {
 $("#game").html(grille)
 
 $(".case").click(function(e) {
-    turn == 0 ? turn = 1 : turn = 0
-    //console.log("ligne : "+ $(e.target).data("rows"));
-    //console.log("collone : "+ $(e.target).data("columns"));
-    console.log()
-    // pour une collones cliquée, chercher la valeur de ligne la plus basse 
-    $.each($('div[data-columns='+$(e.target).data("columns")+']'), function(i, e) {
-        console.log('name='+ i + ' value=' +e);
-    });
-    //console.log("turn : " + turn)
+    console.log($(e.target).prop('id'))
 });
+
+

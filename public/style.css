@@ -1,0 +1,78 @@
+#chat {
+    background-color: #20a58f;
+}
+#message {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+#zone-text {
+    display:flex;
+    justify-content: center;
+}
+#root {
+    width:100%;
+}
+#chat {
+    /*width:60%;*/
+}
+.flexbox {
+    display:flex;
+}
+.App {
+    text-align: center;
+    background-color: #20a58f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+.board-game {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    height: 650px;
+    width: 800px;
+}
+.cercle{
+    margin: 2px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    border: 3px solid rgb(0, 0, 0);
+}
+
+.jaune {
+    background-color: rgb(168, 179, 28);
+}
+.rouge {
+    background-color: rgb(216, 0, 0);
+}
+.hover-color {
+    background-color: rgba(33, 24, 114, 0.125);
+}
+#modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(000,000,000, 0.5);
+    font-size: 32px;
+}
+.modal_body{
+    width: 600px;
+    height: 600px;
+    margin: calc(25% - 300px) auto;
+    background-color: antiquewhite;
+}
+.modal{
+    display: block;
+    width: 200px;
+}
+#spinner{
+    display: none;
+}
