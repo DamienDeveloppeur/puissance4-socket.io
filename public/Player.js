@@ -8,6 +8,7 @@ class Player {
         this.name=name;
         this.color = color;
     }
+<<<<<<< HEAD
 
     setName(name){
         this.name=name;
@@ -16,5 +17,7 @@ class Player {
     setColor(color){
         this.color=color;
     }
+=======
+>>>>>>> tambouille
 }
 module.exports= {Player}

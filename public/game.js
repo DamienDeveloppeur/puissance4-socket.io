@@ -14,7 +14,10 @@ class App extends React.Component {
           tourJoueurJaune: true,
           endGame: 0,
           board: this.basic,
-          hoverIndex: null
+          hoverIndex: null,
+          listPlayers : [
+
+          ]
       }
     }
     componentDidUpdate () {
@@ -50,10 +53,8 @@ class App extends React.Component {
         socket.on("play", (x, player, players) => {
         socket.emit('confirm');
         console.log("PLAYERS : " + players)
-
-        if(players.color != this.state.tourJoueurJaune){
-            return;
-        }
+        console.log("PLAYERS : " + players.color)
+        if(players.color != this.state.tourJoueurJaune) return;
         const joueur = this.state.tourJoueurJaune;
         let myNewBoard = [...this.state.board];
         const myCol = myNewBoard[x];
@@ -122,30 +123,35 @@ class App extends React.Component {
             }
         }
         this.setState({board: myNewBoard, tourJoueurJaune: !joueur})
-
-
-
+        
         })
     }
     handleClick = x => {
-        socket.on('messageServer',function(nbJoueur){
-            if( (nbJoueur[0].color ==true && nbJoueur[1].color==true) || (nbJoueur[0].color ==false && nbJoueur[1].color==false) ){
-               let confirm = window.confirm("restart game?");
-               if(confirm){
-                   window.location.href='http://localhost:3000/';
-               }
-            }
-        })
-        socket.emit("play", x, this.state.tourJoueurJaune);
+        socket.emit("play", x, this.state.tourJoueurJaune)
     }
 
     render() {
-
+        //let turn = <div className=""> {(this.state.tourJoueurJaune) ?  "Tour des jaunes" : "Tour des rouges"}</div>
+        socket.on("prompt", (players) => {
+           // console.log("players client side : "+ players[socket.id].id)
+            console.log("players client side : "+ JSON.stringify(players))
+            this.state.listPlayers = [];
+            for (let key in players){
+                this.setState(prevState => ({
+                    listPlayers: [...prevState.listPlayers, players[key]]
+                }))
+            }
+            console.log("here2")
+        })
         const board= this.state.board;
+        
         return (
             <div className="App">
                     <p> Puissance 4 du feu de dieu </p>
                     <p>In Hubert we trust</p>
+                    <div className=""> {(this.state.tourJoueurJaune) ?  "Tour des jaunes" : "Tour des rouges"}</div>
+                    <p>Joueurs connectés : </p>
+                    {this.state.listPlayers.map((obj,i) => <div key={i} className=""> {obj.name} {(obj.color) ? "Jaune" : "Rouge" } </div>)}
                     <div className="board-game">
                         {
                             (board)

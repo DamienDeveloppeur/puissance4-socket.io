@@ -15,7 +15,11 @@
     width:100%;
 }
 #chat {
+<<<<<<< HEAD
     /*width:60%;*/
+=======
+    width:60%;
+>>>>>>> tambouille
 }
 .flexbox {
     display:flex;
@@ -55,6 +59,7 @@
 }
 .hover-color {
     background-color: rgba(33, 24, 114, 0.125);
+<<<<<<< HEAD
 }
 #modal{
     position: absolute;
@@ -75,4 +80,6 @@
 }
 #spinner{
     display: none;
+=======
+>>>>>>> tambouille
 }

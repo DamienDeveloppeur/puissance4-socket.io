@@ -11,14 +11,9 @@
     <link rel="stylesheet" href="/style.css" type="text/css">
 </head>
 <body>
-
   <div class="flexbox">
-    <div id="modal"></div>
     <div id="root"></div>
-   <div id="chat"></div>
-  <div id="spinner" style="width: 100%;height: 100%; position: absolute; top:0; left: 0">
-      <div>LOADING</div>
-  </div>
+    <div id="chat"></div>
   </div>
 
 
@@ -27,27 +22,13 @@
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous"></script>
   <script> 
-    var players;
-
     const socket = io();
-    //socket.emit("player" ,window.prompt("votre nom?"));
-   // socket.on("prompt", (play) => {
-     // console.log("OKEYYYY")
-    //  players = play;
-    //  console.log(players)
-  //  })
-
-    socket.on('openModal', () =>{
-        let modal = document.getElementById('modal');
-        modal.style.display='block';
-    })
+    socket.emit("player" ,window.prompt("votre nom?"));
   </script>
   <script>
 
   </script>
   <script type="text/babel" src="game.js"></script>
   <script type="text/babel" src="chat.js"></script>
-  <script type="text/babel" src="modal.js"></script>
-
 </body>
 </html>
