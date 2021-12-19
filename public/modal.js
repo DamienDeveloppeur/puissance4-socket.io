@@ -18,6 +18,9 @@ class ModalDialogue extends  React.Component{
         if(e.target.value==="rouge"){
             this.tokenColor=false;
         }
+        else{
+            this.tokenColor=true;
+        }
     }
     close(){
 
@@ -27,6 +30,7 @@ class ModalDialogue extends  React.Component{
         let doc = document.querySelector('#modal');
         console.log(nom +" "+token);
         socket.emit("player",nom,token);
+        console.log(nom,token);
         doc.style.display="none";
     }
 

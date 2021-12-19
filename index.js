@@ -34,8 +34,6 @@ var players = {};
 
 io.on('connection', (socket) => {
 
-
-
   console.log('User joined');
 
     socket.on("play", (x,joueur) => {
@@ -57,17 +55,14 @@ io.on('connection', (socket) => {
         countP++;
         let bool;
         (countP == 1) ? bool = true : bool = false
-        players[socket.id] = {id: socket.id, name: name, color:bool};
-        //players[socket.id] = {id: socket.id, name: name, color: token};
+        //players[socket.id] = {id: socket.id, name: name, color:bool};
+        players[socket.id] = {id: socket.id, name: name, color: token};
         tableauJoueur.push(players[socket.id])
+
+        console.log(players[socket.id]);
 
     }
   })
-
-
-
-
-
 
 
   // on peut repérer une déconnexion
