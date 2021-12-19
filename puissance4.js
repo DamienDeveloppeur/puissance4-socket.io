@@ -1,3 +1,4 @@
+let turn = 0;
 var map = [
     [0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0],
@@ -17,7 +18,6 @@ for (i = 0; i <rows; i++) {
         if(map[i][j] == 0) grille += "<div class='case' data-rows='"+i+"' data-columns='"+j+"'></div>";
         if(map[i][j] == 1) grille += "<div class='case red' data-rows='"+i+"' data-columns='"+j+"'></div>"
         if(map[i][j] == 2) grille += "<div class='case blue' data-rows='"+i+"' data-columns='"+j+"'></div>"
-        
     }
     grille += "</div>";
 }

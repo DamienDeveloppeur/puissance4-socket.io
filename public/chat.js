@@ -17,8 +17,8 @@ class Chat extends React.Component {
              console.log("PLAYERS : " +players)
             this.setState(prevState => ({
                 message: [...prevState.message, {msg: message, autor: players.name}]
-              }))
-            console.log(this.state.message)
+            }))
+              console.log(this.state.message)
             console.log('Message received from server: ', message);
             socket.emit('confirm');
 
@@ -35,7 +35,7 @@ class Chat extends React.Component {
         //console.log(message)
         return (
             <div className="Chat">
-                <h1>Messagerie</h1>
+        
                 <div id="zone-text">
                     <input type="text" id="ref" ref={this.myRef} ></input>
                     <button id="send" onClick={() => {this.send()}} >Send</button>

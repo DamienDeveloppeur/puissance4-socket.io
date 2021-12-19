@@ -8,7 +8,6 @@ class Player {
         this.name=name;
         this.color = color;
     }
-
     setName(name){
         this.name=name;
     }
@@ -16,5 +15,6 @@ class Player {
     setColor(color){
         this.color=color;
     }
+
 }
 module.exports= {Player}
